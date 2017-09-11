@@ -5,13 +5,16 @@ package com.yunus.array;
  */
 public class Test {
     public static void main(String[] args) {
-        LongArrayUtil util = new LongArrayUtil();
-        util.sortInsert(12);
-        util.sortInsert(13);
-        util.sortInsert(14);
-        util.sortInsert(15);
-        util.sortInsert(11);
-        util.sortInsert(10);
+        BobArray util = new BobArray();
+        util.insert(12);
+        util.insert(13);
+        util.insert(14);
+        util.insert(15);
+        util.insert(11);
+        util.insert(10);
         util.display();
+        util.bubleSort();
+        util.display();
+        
     }
 }
