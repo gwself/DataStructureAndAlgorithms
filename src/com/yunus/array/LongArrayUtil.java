@@ -59,7 +59,7 @@ public class LongArrayUtil {
         arr[i] = value;
         elems++;
     }
-    // 查找 (第一次出现时的下标)
+    // 查找 (第一次出现时的下标 线性查找)
     public int find(long seachKey) {
         int i;
         for (i = 0; i < elems; i++) {
@@ -73,6 +73,28 @@ public class LongArrayUtil {
             return i;
         }
     }
+
+    // 二分法查找
+    public int binaryFind(long seachKey){
+        int ins = 0;
+        int low = 0;
+        int pow = elems;
+        while(true){
+            ins = (low+pow)/2;
+            if(arr[ins] == seachKey){
+                return  ins;
+            }else if(low >pow){
+                return -1;
+            }else{
+                if(arr[ins]>seachKey){
+                    pow = ins -1;
+                }else{
+                    low = ins +1;
+                }
+            }
+        }
+    }
+
     // 显示
     public void display(){
         for (int i = 0;i<elems;i++){
