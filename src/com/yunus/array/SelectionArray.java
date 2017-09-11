@@ -5,18 +5,18 @@ import java.util.Arrays;
 /**
  * Created by yunus on 2017/9/11.
  */
-public class BobArray {
+public class SelectionArray {
 
     // 操作数组
     private long[] arr;
     // 记录元素个数
     private int elems;
 
-    public BobArray() {
+    public SelectionArray() {
         arr = new long[10];
     }
 
-    public BobArray(int max) {
+    public SelectionArray(int max) {
         arr = new long[max];
     }
 
@@ -27,6 +27,7 @@ public class BobArray {
         arr[elems++] = value;
     }
 
+
     // 简单扩容
     private void expansion() {
         if (elems == arr.length) {
@@ -34,24 +35,27 @@ public class BobArray {
         }
     }
 
-    // 冒泡排序方法
-    public void bubleSort() {
-        long temp = 0l;
+    // 选择排序方法
+    public void selectSort() {
+        int min = 0;
+        long temp = 0L;
         for (int i = 0; i < elems - 1; i++) {
-            for (int j = 0; j < elems - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+            min = i;
+            for (int j = i + 1; j < elems; j++) {
+                if (arr[j] < arr[min]) {
+                    min = j;
                 }
             }
+            temp = arr[i];
+            arr[i] = arr[min];
+            arr[min] = temp;
         }
     }
 
     // 显示
     public void display() {
         for (int i = 0; i < elems; i++) {
-            System.out.print(arr[i]+" ");
+            System.out.print(arr[i] + " ");
         }
         System.out.println();
     }
