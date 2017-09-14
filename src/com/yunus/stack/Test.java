@@ -7,8 +7,9 @@ public class Test {
     public static void main(String[] args) {
         // mystack 测试
         testMyStack();
+        testReverse();
     }
-
+    // 测试栈
     public static void testMyStack() {
         LongStack stack = new LongStack(10);
         stack.push(10);
@@ -20,5 +21,10 @@ public class Test {
         while (!stack.isEmpty()) {
             System.out.println(stack.pop());
         }
+    }
+    // 字符串反转
+    public static void testReverse(){
+        ReversalStr str = new ReversalStr("hello");
+        System.out.println(str.doReserve());
     }
 }
