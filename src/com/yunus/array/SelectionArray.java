@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 /**
  * Created by yunus on 2017/9/11.
+ * 选择排序（Selection sort）是一种简单直观的排序算法。它的工作原理是每一次从待排序的数据元素中选出最小（或最大）的一个元素，
+ * 存放在序列的起始位置，直到全部待排序的数据元素排完
  */
 public class SelectionArray {
 

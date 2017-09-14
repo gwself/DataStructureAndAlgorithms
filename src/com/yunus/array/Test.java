@@ -5,7 +5,7 @@ package com.yunus.array;
  */
 public class Test {
     public static void main(String[] args) {
-        SelectionArray util = new SelectionArray();
+        InsertionArray util = new InsertionArray();
         util.insert(12);
         util.insert(13);
         util.insert(14);
@@ -13,7 +13,7 @@ public class Test {
         util.insert(11);
         util.insert(10);
         util.display();
-        util.selectSort();
+        util.insertSort();
         util.display();
         
     }
