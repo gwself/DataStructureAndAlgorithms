@@ -10,7 +10,7 @@ public class Test {
     }
 
     public static void testMyStack() {
-        MyStack stack = new MyStack(10);
+        LongStack stack = new LongStack(10);
         stack.push(10);
         stack.push(20);
         stack.push(30);
