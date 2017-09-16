@@ -37,6 +37,7 @@ public class Recursive {
         }
     }
 
+
     /**
      * 三角数
      * @param n
