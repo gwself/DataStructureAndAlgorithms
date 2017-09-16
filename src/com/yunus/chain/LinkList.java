@@ -4,7 +4,7 @@ package com.yunus.chain;
  * Created by yunus on 2017/9/14.
  * 链表
  */
-public class Link<E> {
+public class LinkList<E> {
 
     // 第一个数据
     private Node first;

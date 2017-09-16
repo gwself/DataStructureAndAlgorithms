@@ -10,7 +10,7 @@ public class Test {
 
     // 插入指定位置的节点
     public static void test1(){
-        Link link = new Link();
+        LinkList link = new LinkList();
         link.insert(10);
         link.insert(11);
         link.insert(12);
@@ -20,7 +20,7 @@ public class Test {
 
     // 链表测试
     public static void test2(){
-        Link link = new Link();
+        LinkList link = new LinkList();
         link.insert(10);
         link.insert(11);
         link.insert(12);
@@ -29,7 +29,7 @@ public class Test {
 
     // 测试删除指定节点
     public static void test3(){
-        Link link = new Link();
+        LinkList link = new LinkList();
         link.insert(10);
         link.insert(11);
         link.insert(12);
@@ -40,4 +40,5 @@ public class Test {
         link.displayAll();
         System.out.println(link.size());
     }
+
 }

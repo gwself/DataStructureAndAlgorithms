@@ -6,17 +6,17 @@ import java.util.Arrays;
  * Created by yunus on 2017/9/11.
  * 对long数组的操作封装
  */
-public class LongArrayUtil {
+public class MyArray {
     // 操作数组
     private long[] arr;
     // 记录元素个数
     private int elems;
 
-    public LongArrayUtil() {
+    public MyArray() {
         arr = new long[10];
     }
 
-    public LongArrayUtil(int max) {
+    public MyArray(int max) {
         arr = new long[max];
     }
 
