@@ -9,6 +9,8 @@ public class Link<E> {
     // 第一个数据
     private Node first;
 
+    private int size;
+
     // 插入
     public void insert(E value) {
         Node lin = new Node(value);
@@ -17,6 +19,42 @@ public class Link<E> {
         } else {
             lin.setNext(first);
             first = lin;
+        }
+        size ++;
+    }
+
+    // 插入节点到指定位置 初始位置为0开始
+    public void insert(E value, int position) {
+        if (position == 0) {
+            insert(value);
+            size++;
+        } else if (position < 0) {
+            throw new IndexOutOfBoundsException();
+        } else {
+            Node current = first;
+            for (int i = 0; i < position - 1; i++) {
+                current = first.getNext();
+            }
+            Node node = new Node(value);
+            node.setNext(current.getNext());
+            current.setNext(node);
+            size++;
+        }
+    }
+
+    // 删除指定节点
+    public void delete(int position){
+        if(position <0 || position > size-1){
+            throw new IndexOutOfBoundsException();
+        }else{
+            Node current = first;
+            Node last = first;
+            for(int i = 0;i<position;i++){
+                last = current;
+                current = current.getNext();
+            }
+            last.setNext(current.getNext());
+            size--;
         }
     }
 
@@ -27,6 +65,10 @@ public class Link<E> {
             System.out.println(current.getData());
             current = current.getNext();
         }
+    }
+    // link大小
+    public int size(){
+        return size;
     }
 
     static class Node<E> {
