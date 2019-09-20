@@ -6,7 +6,9 @@ package com.yunus.datastucture.binarytree;
  */
 public class BinaryTree {
 
-    // 根节点
+    /**
+     * 根节点
+     */
     private Node root;
 
     /**
@@ -23,17 +25,20 @@ public class BinaryTree {
             Node current = root;
             Node parent;
             while (true) {
-                parent = current;// 记录上积极节点
+                // 记录上积极节点
+                parent = current;
                 if (keyData < current.getKeyData()) {
                     current = current.getLeftNode();
-                    if(current == null){
-                        parent.setLeftNode(newNode);// 增加节点
+                    if (current == null) {
+                        // 增加节点
+                        parent.setLeftNode(newNode);
                         break;
                     }
                 } else {
                     current = current.getRightNode();
-                    if(current == null){
-                        parent.setRightNode(newNode);// 增加节点
+                    if (current == null) {
+                        // 增加节点
+                        parent.setRightNode(newNode);
                         break;
                     }
                 }
@@ -44,19 +49,20 @@ public class BinaryTree {
     /**
      * 查找方法
      * 从根节点开始查找如果查找节点值比父节点值小，则查找左子树，否则查找右子树，直到查找到为止
+     *
      * @param keyData
      * @return
      */
     public Node find(int keyData) {
         Node current = root;
-        while(current.getKeyData() != keyData){
-            if(keyData<current.getKeyData()){
-                current= current.getLeftNode();
-            }else{
+        while (current.getKeyData() != keyData) {
+            if (keyData < current.getKeyData()) {
+                current = current.getLeftNode();
+            } else {
                 current = current.getRightNode();
             }
             // 找不到时
-            if(current == null){
+            if (current == null) {
                 break;
             }
         }
@@ -67,15 +73,15 @@ public class BinaryTree {
      * 遍历二叉树
      * 先序遍历二叉树（访问节点--》遍历节点左节点树--》遍历节点右节点树）
      */
-    public void preOrder(Node root){
-        if(root != null){
+    public void preOrder(Node root) {
+        if (root != null) {
             root.display();
             preOrder(root.leftNode);
             preOrder(root.rightNode);
         }
     }
 
-    public Node getRoot(){
+    public Node getRoot() {
         return root;
     }
 
@@ -92,9 +98,10 @@ public class BinaryTree {
      * 修改方法
      * 1.找到节点
      * 2.修改值
+     *
      * @param keyData
      */
-    public void update(int keyData,int newOtherData) {
+    public void update(int keyData, int newOtherData) {
         Node node = find(keyData);
         node.setOtherData(newOtherData);
     }
@@ -148,9 +155,10 @@ public class BinaryTree {
         public void setRightNode(Node rightNode) {
             this.rightNode = rightNode;
         }
+
         // 显示
-        public void display(){
-            System.out.println(keyData + " ,"+otherData);
+        public void display() {
+            System.out.println(keyData + " ," + otherData);
         }
     }
 }
