@@ -1,8 +1,9 @@
 package com.yunus.datastucture.binarytree;
 
 /**
- * Created by yunus on 2017/9/16.
- * 二叉树：每个节点最多只能有两个节点
+ * 二叉树
+ *
+ * @author gaoyunfeng
  */
 public class BinaryTree {
 
@@ -156,7 +157,6 @@ public class BinaryTree {
             this.rightNode = rightNode;
         }
 
-        // 显示
         public void display() {
             System.out.println(keyData + " ," + otherData);
         }

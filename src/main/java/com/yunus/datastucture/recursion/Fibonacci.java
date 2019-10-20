@@ -1,7 +1,8 @@
 package com.yunus.datastucture.recursion;
 
 /**
- * Created by yunus on 2017/9/16.
+ * @author yunus
+ * @date 2017/9/16
  * 用递归来产生Fibonacci 数列
  */
 public class Fibonacci {
@@ -16,11 +17,11 @@ public class Fibonacci {
 
     }
 
-    public static int test(int n){
-        if(n == 1 || n == 2){
+    public static int test(int n) {
+        if (n == 1 || n == 2) {
             return 1;
-        }else{
-            return test(n-1)+test(n-2);
+        } else {
+            return test(n - 1) + test(n - 2);
         }
     }
 

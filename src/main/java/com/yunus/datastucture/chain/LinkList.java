@@ -1,17 +1,24 @@
 package com.yunus.datastucture.chain;
 
 /**
- * Created by yunus on 2017/9/14.
+ * @author yunus
+ * @date 2017/9/14
  * 链表
  */
 public class LinkList<E> {
 
-    // 第一个数据
+    /**
+     * 第一个数据
+     */
     private Node first;
 
     private int size;
 
-    // 插入
+    /**
+     * 插入
+     *
+     * @param value
+     */
     public void insert(E value) {
         Node lin = new Node(value);
         if (first == null) {
@@ -20,10 +27,15 @@ public class LinkList<E> {
             lin.setNext(first);
             first = lin;
         }
-        size ++;
+        size++;
     }
 
-    // 插入节点到指定位置 初始位置为0开始
+    /**
+     * 插入节点到指定位置 初始位置为0开始
+     *
+     * @param value
+     * @param position
+     */
     public void insert(E value, int position) {
         if (position == 0) {
             insert(value);
@@ -42,14 +54,18 @@ public class LinkList<E> {
         }
     }
 
-    // 删除指定节点
-    public void delete(int position){
-        if(position <0 || position > size-1){
+    /**
+     * 删除指定节点
+     *
+     * @param position
+     */
+    public void delete(int position) {
+        if (position < 0 || position > size - 1) {
             throw new IndexOutOfBoundsException();
-        }else{
+        } else {
             Node current = first;
             Node last = first;
-            for(int i = 0;i<position;i++){
+            for (int i = 0; i < position; i++) {
                 last = current;
                 current = current.getNext();
             }
@@ -58,7 +74,9 @@ public class LinkList<E> {
         }
     }
 
-    // 查询
+    /**
+     * 查询
+     */
     public void displayAll() {
         Node current = first;
         while (current != null) {
@@ -66,8 +84,13 @@ public class LinkList<E> {
             current = current.getNext();
         }
     }
-    // link大小
-    public int size(){
+
+    /**
+     * size
+     *
+     * @return
+     */
+    public int size() {
         return size;
     }
 

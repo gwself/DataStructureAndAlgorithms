@@ -1,7 +1,8 @@
 package com.yunus.datastucture.stack;
 
 /**
- * Created by yunus on 2017/9/14.
+ * @author yunus
+ * @date 2017/9/14
  */
 public class Test {
     public static void main(String[] args) {
@@ -9,7 +10,10 @@ public class Test {
         testMyStack();
         testReverse();
     }
-    // 测试栈
+
+    /**
+     * 测试栈
+     */
     public static void testMyStack() {
         LongStack stack = new LongStack(10);
         stack.push(10);
@@ -22,8 +26,11 @@ public class Test {
             System.out.println(stack.pop());
         }
     }
-    // 字符串反转
-    public static void testReverse(){
+
+    /**
+     * 字符串反转
+     */
+    public static void testReverse() {
         ReversalStr str = new ReversalStr("hello");
         System.out.println(str.doReserve());
     }
