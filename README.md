@@ -1,2 +1,6 @@
-# DataStructureAndAlgorithms
-java数据结构与算法学习
+# 项目背景
+1. java数据结构与算法学习
+
+2. 学习极客时间上面的  数据结构与算法之美（王铮） 课程学习记录
+
+3. leetcode上面部分试题的解答
