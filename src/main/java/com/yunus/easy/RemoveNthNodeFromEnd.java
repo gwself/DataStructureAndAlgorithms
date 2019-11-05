@@ -3,27 +3,14 @@ package com.yunus.easy;
 import com.yunus.utils.ListNode;
 
 /**
- * Given a linked list, remove the nth node from the end of list and return its
- * head.
- * <p>
- * For example,
- * <p>
- * Given linked list: 1->2->3->4->5, and n = 2.
- * <p>
- * After removing the second node from the end, the linked list becomes
- * 1->2->3->5.
- * <p>
- * Note:
- * Given n will always be valid.
- * Try to do this in one pass.
- * <p>
- * Tags: Linked list, Two pointers
+ * 给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。
+ * 示例：
+ * 给定一个链表: 1->2->3->4->5, 和 n = 2.
+ * 当删除了倒数第二个节点后，链表变为 1->2->3->5.
  */
 class RemoveNthNodeFromEnd {
 
-    /**
-     * Dummy head and Runner's technique
-     */
+
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode pre = new ListNode(0);
         pre.next = head;
