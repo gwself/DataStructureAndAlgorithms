@@ -1,48 +1,33 @@
 package com.yunus.medium;
 
+import com.yunus.utils.ListNode;
+import com.yunus.utils.Utils;
+
 /**
- * Given a linked list, determine if it has a cycle in it.
- * <p>
- * Follow up:
- * Can you solve it without using extra space?
- * <p>
- * Tags: Linkedlist, Two pointers
+ * 循环链表
  */
 class LinkedListCycle {
 
     public static void main(String[] args) {
-        LinkedListCycle cycle = new LinkedListCycle();
-        cycle.hasCycle(new ListNode(1));
+        ListNode cycleChain = Utils.getCycleChain();
+        System.out.println(hasCycle(cycleChain));
     }
 
-    /**
-     * Runnner's technique
-     * Check the next and next next of faster node is slower node or not.
-     */
-    public boolean hasCycle(ListNode head) {
-        if(head == null || head.next == null){
+
+    public static boolean hasCycle(ListNode head) {
+        if (head == null || head.next == null) {
             return false;
         }
         //使用快慢指针，若指针相遇则判断有环
         ListNode fast = head;
         ListNode slow = head;
-        while(fast.next.next != null && slow.next != null){
+        while (fast.next.next != null && slow.next != null) {
             fast = fast.next.next;
             slow = slow.next;
-            if(fast == slow){
+            if (fast == slow) {
                 return true;
             }
         }
         return false;
-    }
-
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
     }
 }

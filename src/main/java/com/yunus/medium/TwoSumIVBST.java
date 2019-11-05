@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.yunus.algorithms.utils.Utils.TreeNode;
+import com.yunus.utils.TreeNode;
 
 /**
  * 653. Two Sum IV - Input is a BST

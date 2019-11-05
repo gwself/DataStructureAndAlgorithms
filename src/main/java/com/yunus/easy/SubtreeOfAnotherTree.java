@@ -1,6 +1,6 @@
 package com.yunus.easy;
 
-import com.yunus.algorithms.utils.Utils.TreeNode;
+import com.yunus.utils.TreeNode;
 
 /**
  * 572. Subtree of Another Tree

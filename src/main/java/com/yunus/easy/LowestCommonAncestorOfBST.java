@@ -1,6 +1,6 @@
 package com.yunus.easy;
 
-import com.yunus.algorithms.utils.Utils.TreeNode;
+import com.yunus.utils.TreeNode;
 
 /**
  * 235. Lowest Common Ancestor of a Binary Search Tree

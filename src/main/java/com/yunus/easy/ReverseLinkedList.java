@@ -1,53 +1,45 @@
 package com.yunus.easy;
 
-import com.yunus.algorithms.utils.Utils.ListNode;
+
+import com.yunus.utils.ListNode;
 
 /**
- * 206. Reverse Linked List
- * <p>
- * Reverse a singly linked list.
- * <p>
- * Hint:
- * A linked list can be reversed either iteratively or recursively. Could you implement both?
- * <p>
- * Company Tags: Uber, Facebook, Twitter, Zenefits, Amazon, Microsoft, Snapchat, Apple, Yahoo, Bloomberg, Yelp, Adobe
- * Tags: Linked List
- * Similar Problems: (M) Reverse Linked List II, (M) Binary Tree Upside Down, (E) Palindrome Linked List
+ * 反转链表
  */
 public class ReverseLinkedList {
 
+    public static void main(String[] args) {
+        ListNode chain = new ListNode();
+        chain.val = 1;
+        ListNode two = new ListNode();
+        chain.next = two;
+        two.val = 2;
+        ListNode three = new ListNode();
+        two.next = three;
+        three.val = 3;
+    }
+
     /**
-     * Recursive.
-     * Divide the list into 2 parts - head and the rest starts from head.next.
-     * Reverse the rest of the linked list.
-     * Append head to the tail of reversed linked list, which is head's next.
-     * Return newHead of the reversed linked list.
+     * 递归方式
+     *
+     * @param head 头
+     * @return
      */
     public ListNode reverseList(ListNode head) {
-        if (head == null || head.next == null) { // Empty list or just 1 node.
+        if (head == null || head.next == null) {
             return head;
         }
-        /*
-         * Reverse the rest of the list has to be done first.
-         * Otherwise we lose the reference to the head of the rest of the linked list.
-         * Unless we save it with some other variable.
-         */
         ListNode newHead = reverseList(head.next);
-        head.next.next = head; // Connect next node with current node.
-        head.next = null; // Disconnect current node.
+        head.next.next = head;
+        head.next = null;
         return newHead;
     }
 
     /**
-     * Iterative.
-     * Get one node each time and make it the new head of the reversed list.
-     * Create a head of the linked list as null.
-     * Use the original head as a pointer to iterate the list.
-     * While the original head:
-     * | First store the next head.
-     * | Then set head.next to newHead.
-     * | Move newHead to head.
-     * | Move head to its stored next.
+     * 记录临时节点 交换
+     *
+     * @param head
+     * @return
      */
     public ListNode reverseList2(ListNode head) {
         ListNode newHead = null;
@@ -60,11 +52,10 @@ public class ReverseLinkedList {
         return newHead;
     }
 
+
     /**
-     * Iterative.
-     * Store the previous node.
-     * So that we can connect current node with previous node.
-     * Easier to understand.
+     * @param head
+     * @return
      */
     public ListNode reverseList3(ListNode head) {
         ListNode cur = head;

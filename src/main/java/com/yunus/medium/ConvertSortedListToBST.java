@@ -1,7 +1,7 @@
 package com.yunus.medium;
 
-import com.yunus.algorithms.utils.Utils.ListNode;
-import com.yunus.algorithms.utils.Utils.TreeNode;
+import com.yunus.utils.ListNode;
+import com.yunus.utils.TreeNode;
 
 /**
  * Given a singly linked list where elements are sorted in ascending order,

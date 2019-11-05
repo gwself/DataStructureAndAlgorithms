@@ -1,6 +1,7 @@
 package com.yunus.easy;
 
-import com.yunus.algorithms.utils.Utils.TreeNode;
+
+import com.yunus.utils.TreeNode;
 
 /**
  * 110. Balanced Binary Tree

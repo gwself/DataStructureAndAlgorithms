@@ -1,6 +1,6 @@
 package com.yunus.medium;
 
-import com.yunus.algorithms.utils.Utils.ListNode;
+import com.yunus.utils.ListNode;
 
 /**
  * Partition List

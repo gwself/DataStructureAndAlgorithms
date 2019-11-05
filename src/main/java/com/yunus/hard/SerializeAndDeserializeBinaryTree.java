@@ -1,6 +1,6 @@
 package com.yunus.hard;
 
-import com.yunus.algorithms.utils.Utils.TreeNode;
+import com.yunus.utils.TreeNode;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;

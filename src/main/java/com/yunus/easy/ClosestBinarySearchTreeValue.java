@@ -1,6 +1,7 @@
 package com.yunus.easy;
 
-import com.yunus.algorithms.utils.Utils.TreeNode;
+
+import com.yunus.utils.TreeNode;
 
 /**
  * Given a non-empty binary search tree and a target value, find the value in the BST that is closest to the target.

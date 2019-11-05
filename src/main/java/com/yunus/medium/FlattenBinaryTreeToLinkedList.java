@@ -1,6 +1,6 @@
 package com.yunus.medium;
 
-import com.yunus.algorithms.utils.Utils.TreeNode;
+import com.yunus.utils.TreeNode;
 
 /**
  * Given a binary tree, flatten it to a linked list in-place.

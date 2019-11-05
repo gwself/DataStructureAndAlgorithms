@@ -1,6 +1,6 @@
 package com.yunus.easy;
 
-import com.yunus.algorithms.utils.Utils.ListNode;
+import com.yunus.utils.ListNode;
 
 /**
  * 234. Palindrome Linked List

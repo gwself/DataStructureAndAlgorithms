@@ -1,6 +1,6 @@
 package com.yunus.medium;
 
-import com.yunus.algorithms.utils.Utils.ListNode;
+import com.yunus.utils.ListNode;
 
 /**
  * You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse

@@ -1,6 +1,6 @@
 package com.yunus.hard;
 
-import com.yunus.algorithms.utils.Utils.ListNode;
+import com.yunus.utils.ListNode;
 
 import java.util.Comparator;
 import java.util.List;

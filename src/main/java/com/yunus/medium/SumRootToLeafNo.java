@@ -1,6 +1,6 @@
 package com.yunus.medium;
 
-import com.yunus.algorithms.utils.Utils.TreeNode;
+import com.yunus.utils.TreeNode;
 
 /**
  * Given a binary tree containing digits from 0-9 only, each root-to-leaf path
