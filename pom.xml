@@ -4,36 +4,25 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.6.RELEASE</version>
-    </parent>
-
     <groupId>com.yunus</groupId>
     <artifactId>datastructure-algorithms</artifactId>
     <version>1.0</version>
+
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-core</artifactId>
-            <version>4.3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <version>4.12</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -46,4 +35,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
