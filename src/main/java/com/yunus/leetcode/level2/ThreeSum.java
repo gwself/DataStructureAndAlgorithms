@@ -1,4 +1,4 @@
-package com.yunus.leetcode;
+package com.yunus.leetcode.level2;
 
 import java.util.ArrayList;
 import java.util.Arrays;

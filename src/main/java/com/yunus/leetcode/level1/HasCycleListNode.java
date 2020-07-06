@@ -1,4 +1,4 @@
-package com.yunus.leetcode;
+package com.yunus.leetcode.level1;
 
 /**
  * 判断链表是否有环

@@ -1,4 +1,4 @@
-package com.yunus.leetcode;
+package com.yunus.leetcode.level1;
 
 /**
  * 反转链表

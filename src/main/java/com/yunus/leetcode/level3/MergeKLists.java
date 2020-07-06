@@ -1,4 +1,4 @@
-package com.yunus.leetcode;
+package com.yunus.leetcode.level3;
 
 
 /**

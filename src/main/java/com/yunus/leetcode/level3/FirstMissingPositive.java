@@ -1,4 +1,4 @@
-package com.yunus.leetcode;
+package com.yunus.leetcode.level3;
 
 /**
  * 缺失的第一个正数

@@ -1,4 +1,4 @@
-package com.yunus.leetcode;
+package com.yunus.lru;
 
 import java.util.Iterator;
 import java.util.LinkedHashMap;
