@@ -53,7 +53,7 @@ public class SlidingWindowRateLimit implements RateLimit, Runnable {
      * 统计总时间 = windowSize * windowPeriod
      *
      * @param limitCount   阈值
-     * @param timeUnit     每个窗口时间间隔
+     * @param timeUnit     每个窗口时间间隔大小单位
      * @param windowPeriod 每个窗口时间间隔大小
      * @param windowSize   窗口数
      */
