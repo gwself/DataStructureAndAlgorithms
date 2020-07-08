@@ -3,9 +3,7 @@ package com.yunus.limiting;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -89,7 +87,7 @@ public class SlidingWindowRateLimit implements RateLimit, Runnable {
     private ScheduledExecutorService scheduledExecutorService;
 
     private void startResetTask() {
-        scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+        scheduledExecutorService = new ScheduledThreadPoolExecutor(1, (runnable)-> new Thread(runnable,"SlidingWindowRateLimit-Thread-ToMoveWindow"));
         scheduledExecutorService.scheduleAtFixedRate(this, windowPeriod, windowPeriod, timeUnit);
     }
 
