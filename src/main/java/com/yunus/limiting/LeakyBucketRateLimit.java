@@ -6,7 +6,7 @@ import java.util.concurrent.locks.LockSupport;
 
 /**
  * @author gaoyunfeng
- * @Description:
+ * @Description: 漏桶算法
  * @date 2020/7/816:36
  */
 public class LeakyBucketRateLimit implements RateLimit, Runnable {

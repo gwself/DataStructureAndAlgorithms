@@ -43,6 +43,7 @@ public class SlidingWindowRateLimit implements RateLimit, Runnable {
     private volatile Integer windowIndex = 0;
 
     private Lock lock = new ReentrantLock();
+
     public SlidingWindowRateLimit(Integer limitCount) {
         // 默认统计qps, 窗口大小5
         this(limitCount, 5, 200, TimeUnit.MILLISECONDS);
@@ -50,6 +51,11 @@ public class SlidingWindowRateLimit implements RateLimit, Runnable {
 
     /**
      * 统计总时间 = windowSize * windowPeriod
+     *
+     * @param limitCount   阈值
+     * @param timeUnit     每个窗口时间间隔
+     * @param windowPeriod 每个窗口时间间隔大小
+     * @param windowSize   窗口数
      */
     public SlidingWindowRateLimit(Integer limitCount, Integer windowSize, Integer windowPeriod, TimeUnit timeUnit) {
         this.limitCount = limitCount;
@@ -81,6 +87,7 @@ public class SlidingWindowRateLimit implements RateLimit, Runnable {
     }
 
     private ScheduledExecutorService scheduledExecutorService;
+
     private void startResetTask() {
         scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
         scheduledExecutorService.scheduleAtFixedRate(this, windowPeriod, windowPeriod, timeUnit);
@@ -100,6 +107,7 @@ public class SlidingWindowRateLimit implements RateLimit, Runnable {
     @Data
     class Window {
         private AtomicInteger passCount;
+
         public Window() {
             this.passCount = new AtomicInteger(0);
         }
