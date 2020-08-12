@@ -12,6 +12,13 @@ import java.util.List;
  */
 public class Permute {
 
+    public static void main(String[] args) {
+        Permute permute = new Permute();
+        int[] arr = {1,2,3};
+        List<List<Integer>> list = permute.permute(arr);
+        list.stream().forEach(System.out::print);
+    }
+
     public void backtrack(int n,
                           ArrayList<Integer> output,
                           List<List<Integer>> res,
