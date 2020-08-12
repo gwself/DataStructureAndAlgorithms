@@ -17,8 +17,9 @@ public class Permute {
                           List<List<Integer>> res,
                           int first) {
         // 所有数都填完了
-        if (first == n)
+        if (first == n) {
             res.add(new ArrayList<Integer>(output));
+        }
         for (int i = first; i < n; i++) {
             // 动态维护数组
             Collections.swap(output, first, i);
@@ -33,8 +34,9 @@ public class Permute {
         List<List<Integer>> res = new LinkedList();
 
         ArrayList<Integer> output = new ArrayList<Integer>();
-        for (int num : nums)
+        for (int num : nums) {
             output.add(num);
+        }
 
         int n = nums.length;
         backtrack(n, output, res, 0);
