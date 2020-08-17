@@ -15,7 +15,7 @@ public class Permute {
     public static void main(String[] args) {
         Permute permute = new Permute();
         int[] arr = {1, 2, 3};
-        List<List<Integer>> list = permute.permute(arr);
+        List<List<Integer>> list = permute.permute2(arr);
         list.stream().forEach(System.out::print);
     }
 
