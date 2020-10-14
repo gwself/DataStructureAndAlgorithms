@@ -1,7 +1,5 @@
 package com.yunus.leetcode;
 
-import lombok.Getter;
-
 /**
  * @author gaoyunfeng
  * @Description: 链表
