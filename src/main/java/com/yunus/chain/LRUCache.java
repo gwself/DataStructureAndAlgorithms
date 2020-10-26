@@ -1,4 +1,4 @@
-package com.yunus.leetcode.level2;
+package com.yunus.chain;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
