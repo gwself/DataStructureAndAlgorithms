@@ -67,7 +67,6 @@ public class LRUBaseLinkedList<T> {
     private void deleteElemOptim(SNode preNode) {
         SNode temp = preNode.getNext();
         preNode.setNext(temp.getNext());
-        temp = null;
         length--;
     }
 
@@ -116,7 +115,6 @@ public class LRUBaseLinkedList<T> {
 
         SNode tmp = ptr.getNext();
         ptr.setNext(null);
-        tmp = null;
         length--;
     }
 
