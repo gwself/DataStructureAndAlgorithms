@@ -34,12 +34,15 @@ public class SortList {
             slow = slow.next;
             fast = fast.next.next;
         }
+        // 中间节点到尾节点的链表
         ListNode tmp = slow.next;
+        // 断开链表
         slow.next = null;
         ListNode left = sortList(head);
         ListNode right = sortList(tmp);
         ListNode h = new ListNode(0);
         ListNode res = h;
+        // 合并结果
         while (left != null && right != null) {
             if (left.val < right.val) {
                 h.next = left;
