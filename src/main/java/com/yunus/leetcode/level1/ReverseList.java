@@ -23,4 +23,14 @@ public class ReverseList {
         int data;
         Node next;
     }
+
+    Node reverse2(Node head) {
+        if (head.next == null) {
+            return head;
+        }
+        Node last = reverse2(head.next);
+        head.next.next = head;
+        head.next = null;
+        return last;
+    }
 }
