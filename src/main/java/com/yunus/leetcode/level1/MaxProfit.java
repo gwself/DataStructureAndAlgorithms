@@ -39,7 +39,9 @@ public class MaxProfit {
         dp[0][0] = 0;
         dp[0][1] = -prices[0];
         for (int i = 1; i < n; ++i) {
+            // 当前不持有股票时收益
             dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
+            // 当前持有股票时收益
             dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][0] - prices[i]);
         }
         return dp[n - 1][0];
