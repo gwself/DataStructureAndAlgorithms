@@ -36,4 +36,4 @@
 - [19 子集](https://github.com/gwself/datastructure-algorithms/blob/master/src/main/java/com/yunus/leetcode/level2/Subsets.java)
 - [20 缺失的第一个正数](https://github.com/gwself/datastructure-algorithms/blob/master/src/main/java/com/yunus/leetcode/level3/FirstMissingPositive.java)
 - [21. 二叉树最大深度](https://github.com/gwself/datastructure-algorithms/blob/master/src/main/java/com/yunus/leetcode/level1/MaxDepth.java)
-- [22. LRU缓存机制](https://github.com/gwself/datastructure-algorithms/blob/master/src/main/java/com/yunus/leetcode/level2/LRUCache.java)
+- [22. LRU缓存机制](https://github.com/gwself/datastructure-algorithms/blob/master/src/main/java/com/yunus/chain/LRUCache.java)
