@@ -12,8 +12,33 @@ public class CoinChange {
 
     public static void main(String[] args) {
         CoinChange coinChange = new CoinChange();
-        int[] coins = {1, 2, 5};
-        coinChange.coinChange2(coins, 11);
+        int[] coins = {1,2,5};
+        int dp = coinChange.dp(coins, 11);
+        System.out.println(dp);
+    }
+
+    /**
+     * 暴力法
+     *
+     * @return
+     */
+    public int dp(int[] coins, int amount) {
+        if (amount < 0) {
+            return -1;
+        }
+        if (amount == 0) {
+            return 0;
+        }
+        // 求最小值，所以初始化为正无穷
+        int res = Integer.MAX_VALUE;
+        for (int i = 0; i < coins.length; i++) {
+            int subProblem = dp(coins, amount - coins[i]);
+            if (subProblem == -1) {
+                continue;
+            }
+            res = Math.min(res, subProblem + 1);
+        }
+        return res == Integer.MAX_VALUE ? -1 : res;
     }
 
     public int coinChange(int[] coins, int amount) {

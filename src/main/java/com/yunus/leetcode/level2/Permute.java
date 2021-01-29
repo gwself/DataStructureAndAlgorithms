@@ -42,6 +42,7 @@ public class Permute {
         if (depth == len) {
             res.add(new ArrayList<>(path));
             return;
+
         }
 
         for (int i = 0; i < len; i++) {
