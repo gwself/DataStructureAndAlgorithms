@@ -14,7 +14,7 @@ public class Permute {
     public static void main(String[] args) {
         Permute permute = new Permute();
         int[] arr = {1, 2, 3};
-        List<List<Integer>> list = permute.permute2(arr);
+        List<List<Integer>> list = permute.permute3(arr);
         list.stream().forEach(System.out::print);
     }
 
@@ -86,8 +86,9 @@ public class Permute {
 
         for (int i = 0; i < nums.length; i++) {
             // 排除不合法的选择
-            if (track.contains(nums[i]))
+            if (track.contains(nums[i])) {
                 continue;
+            }
             // 做选择
             track.add(nums[i]);
             // 进入下一层决策树
