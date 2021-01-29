@@ -8,14 +8,14 @@ package com.yunus.leetcode.level1;
 public class ReverseString {
 
     public void reverseString(char[] s) {
-        int left = 0, right = s.length;
+        int left = 0, right = s.length-1;
         while (left < right) {
             // 交换
             char temp = s[left];
             s[left] = s[right];
             s[right] = temp;
             left++;
-            right++;
+            right--;
         }
     }
 }
