@@ -1,6 +1,6 @@
 package com.yunus.array;
 
-import java.util.Arrays;
+import java.util.Random;
 
 /**
  * 排序算法
@@ -67,93 +67,122 @@ public class ArraySort {
     /**
      * 快速排序
      *
-     * @param arr   数组
-     * @param start 开始位置
-     * @param end   结束位置
+     * @param nums 数组
+     * @param l    开始位置   0
+     * @param r    结束位置   nums.length - 1
      * @return
      */
-    public static int[] quickSort(int[] arr, int start, int end) {
-        int pivot = arr[start];
-        int i = start;
-        int j = end;
-        while (i < j) {
-            while ((i < j) && (arr[j] > pivot)) {
-                j--;
-            }
-            while ((i < j) && (arr[i] < pivot)) {
-                i++;
-            }
-            if ((arr[i] == arr[j]) && (i < j)) {
-                i++;
-            } else {
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+    public void randomizedQuicksort(int[] nums, int l, int r) {
+        if (l < r) {
+            int pos = randomizedPartition(nums, l, r);
+            randomizedQuicksort(nums, l, pos - 1);
+            randomizedQuicksort(nums, pos + 1, r);
+        }
+    }
+
+    public int randomizedPartition(int[] nums, int l, int r) {
+        // 随机选一个作为我们的主元
+        int i = new Random().nextInt(r - l + 1) + l;
+        swap(nums, r, i);
+        return partition(nums, l, r);
+    }
+
+    public int partition(int[] nums, int l, int r) {
+        int pivot = nums[r];
+        int i = l - 1;
+        for (int j = l; j <= r - 1; ++j) {
+            if (nums[j] <= pivot) {
+                i = i + 1;
+                swap(nums, i, j);
             }
         }
-        if (i - 1 > start) {
-            arr = quickSort(arr, start, i - 1);
-        }
-        if (j + 1 < end) {
-            arr = quickSort(arr, j + 1, end);
-        }
-        return (arr);
+        swap(nums, i + 1, r);
+        return i + 1;
     }
 
     /**
-     * 合并排序
+     * 堆排序
      *
-     * @param to_sort
-     * @return
+     * @param nums
      */
-    public static int[] merge_sort(int[] to_sort) {
-        if (to_sort == null) {
-            return new int[0];
+    public void heapSort(int[] nums) {
+        int len = nums.length - 1;
+        buildMaxHeap(nums, len);
+        for (int i = len; i >= 1; --i) {
+            swap(nums, i, 0);
+            len -= 1;
+            maxHeapify(nums, 0, len);
         }
-        // 如果分解到只剩一个数，返回该数
-        if (to_sort.length == 1) {
-            return to_sort;
-        }
-        // 将数组分解成左右两半
-        int mid = to_sort.length / 2;
-        int[] left = Arrays.copyOfRange(to_sort, 0, mid);
-        int[] right = Arrays.copyOfRange(to_sort, mid, to_sort.length);
-        // 嵌套调用，对两半分别进行排序
-        left = merge_sort(left);
-        right = merge_sort(right);
-        // 合并排序后的两半
-        int[] merged = merge(left, right);
-        return merged;
     }
 
-    public static int[] merge(int[] a, int[] b) {
-        if (a == null) a = new int[0];
-        if (b == null) b = new int[0];
-        int[] merged_one = new int[a.length + b.length];
-        int mi = 0, ai = 0, bi = 0;
-        // 轮流从两个数组中取出较小的值，放入合并后的数组中
-        while (ai < a.length && bi < b.length) {
-            if (a[ai] <= b[bi]) {
-                merged_one[mi] = a[ai];
-                ai++;
-            } else {
-                merged_one[mi] = b[bi];
-                bi++;
-            }
-            mi++;
+    public void buildMaxHeap(int[] nums, int len) {
+        for (int i = len / 2; i >= 0; --i) {
+            maxHeapify(nums, i, len);
         }
-        // 将某个数组内剩余的数字放入合并后的数组中
-        if (ai < a.length) {
-            for (int i = ai; i < a.length; i++) {
-                merged_one[mi] = a[i];
-                mi++;
-            }
-        } else {
-            for (int i = bi; i < b.length; i++) {
-                merged_one[mi] = b[i];
-                mi++;
-            }
-        }
-        return merged_one;
     }
+
+    public void maxHeapify(int[] nums, int i, int len) {
+        for (; (i << 1) + 1 <= len; ) {
+            int lson = (i << 1) + 1;
+            int rson = (i << 1) + 2;
+            int large;
+            if (lson <= len && nums[lson] > nums[i]) {
+                large = lson;
+            } else {
+                large = i;
+            }
+            if (rson <= len && nums[rson] > nums[large]) {
+                large = rson;
+            }
+            if (large != i) {
+                swap(nums, i, large);
+                i = large;
+            } else {
+                break;
+            }
+        }
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+
+    /**
+     * 归并排序
+     *
+     * @param nums nums
+     * @param l    left  0
+     * @param r    right nums.length - 1
+     */
+    public void mergeSort(int[] nums, int l, int r) {
+        if (l >= r) {
+            return;
+        }
+        int mid = (l + r) >> 1;
+        mergeSort(nums, l, mid);
+        mergeSort(nums, mid + 1, r);
+        int[] tmp = new int[nums.length];
+        int i = l, j = mid + 1;
+        int cnt = 0;
+        while (i <= mid && j <= r) {
+            if (nums[i] < nums[j]) {
+                tmp[cnt++] = nums[i++];
+            } else {
+                tmp[cnt++] = nums[j++];
+            }
+        }
+        while (i <= mid) {
+            tmp[cnt++] = nums[i++];
+        }
+        while (j <= r) {
+            tmp[cnt++] = nums[j++];
+        }
+        for (int k = 0; k < r - l + 1; ++k) {
+            nums[k + l] = tmp[k];
+        }
+    }
+
 }
