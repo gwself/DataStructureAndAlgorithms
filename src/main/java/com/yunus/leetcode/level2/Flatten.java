@@ -10,35 +10,28 @@ import com.yunus.leetcode.TreeNode;
 public class Flatten {
 
     public void flatten(TreeNode root) {
-        while (root != null) {
-            //左子树为 null，直接考虑下一个节点
-            if (root.left != null) {
-                // 找左子树最右边的节点
-                TreeNode pre = root.left;
-                while (pre.right != null) {
-                    pre = pre.right;
-                }
-                //将原来的右子树接到左子树的最右边节点
-                pre.right = root.right;
-                // 将左子树插入到右子树的地方
-                root.right = root.left;
-                root.left = null;
-                // 考虑下一个节点
-            }
-            root = root.right;
-        }
-    }
-
-    private TreeNode pre = null;
-
-    public void flatten2(TreeNode root) {
+        // base case
         if (root == null) {
             return;
         }
-        flatten(root.right);
+
         flatten(root.left);
-        root.right = pre;
+        flatten(root.right);
+
+        // 后序遍历位置
+        // 1、左右子树已经被拉平成一条链表
+        TreeNode left = root.left;
+        TreeNode right = root.right;
+
+        // 2、将左子树作为右子树
         root.left = null;
-        pre = root;
+        root.right = left;
+
+        // 3、将原先的右子树接到当前右子树的末端
+        TreeNode p = root;
+        while (p.right != null) {
+            p = p.right;
+        }
+        p.right = right;
     }
 }
