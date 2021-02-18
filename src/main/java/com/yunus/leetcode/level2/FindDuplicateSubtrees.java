@@ -15,6 +15,18 @@ import java.util.Map;
 public class FindDuplicateSubtrees {
 
 
+    public TreeNode buildTree() {
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.right.left = new TreeNode(2);
+        root.right.left.left = new TreeNode(4);
+        root.right.right = new TreeNode(4);
+        return root;
+    }
+
+
     public List<TreeNode> findDuplicateSubtrees(TreeNode root) {
         Map<String, Integer> count = new HashMap<>();
         List<TreeNode> ans = new ArrayList<>();
@@ -35,5 +47,11 @@ public class FindDuplicateSubtrees {
         }
         count.put(temp, times + 1);
         return temp;
+    }
+
+    public static void main(String[] args) {
+        FindDuplicateSubtrees findDuplicateSubtrees = new FindDuplicateSubtrees();
+        TreeNode root = findDuplicateSubtrees.buildTree();
+        findDuplicateSubtrees.findDuplicateSubtrees(root);
     }
 }
