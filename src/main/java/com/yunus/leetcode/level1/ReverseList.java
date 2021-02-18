@@ -1,5 +1,7 @@
 package com.yunus.leetcode.level1;
 
+import com.yunus.leetcode.ListNode;
+
 /**
  * 反转链表
  *
@@ -8,10 +10,14 @@ package com.yunus.leetcode.level1;
 public class ReverseList {
 
 
-    public Node reverseList(Node head) {
-        Node current = null;
+    /**
+     * @param head
+     * @return
+     */
+    public ListNode reverseList(ListNode head) {
+        ListNode current = null;
         while (head != null) {
-            Node next = head.next;
+            ListNode next = head.next;
             head.next = current;
             current = head;
             head = next;
@@ -19,16 +25,17 @@ public class ReverseList {
         return current;
     }
 
-    class Node {
-        int data;
-        Node next;
-    }
-
-    Node reverse2(Node head) {
+    /**
+     * 递归反转
+     *
+     * @param head
+     * @return
+     */
+    public ListNode reverse2(ListNode head) {
         if (head.next == null) {
             return head;
         }
-        Node last = reverse2(head.next);
+        ListNode last = reverse2(head.next);
         head.next.next = head;
         head.next = null;
         return last;
