@@ -1,9 +1,10 @@
 package com.yunus.limiting;
 
 import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -18,29 +19,29 @@ public class SlidingWindowRateLimit implements RateLimit, Runnable {
     /**
      * 阈值
      */
-    private Integer limitCount;
+    private final Integer limitCount;
 
     /**
      * 当前通过的请求数
      */
-    private AtomicInteger passCount;
+    private final AtomicInteger passCount;
 
     /**
      * 窗口数
      */
-    private Integer windowSize;
+    private final Integer windowSize;
 
     /**
      * 每个窗口时间间隔大小
      */
-    private long windowPeriod;
-    private TimeUnit timeUnit;
+    private final long windowPeriod;
+    private final TimeUnit timeUnit;
 
 
     private Window[] windows;
     private volatile Integer windowIndex = 0;
 
-    private Lock lock = new ReentrantLock();
+    private final Lock lock = new ReentrantLock();
 
     public SlidingWindowRateLimit(Integer limitCount) {
         // 默认统计qps, 窗口大小5
@@ -68,12 +69,15 @@ public class SlidingWindowRateLimit implements RateLimit, Runnable {
     @Override
     public boolean canPass() throws BlockException {
         lock.lock();
-        if (passCount.get() > limitCount) {
-            throw new BlockException();
+        try {
+            if (passCount.get() > limitCount) {
+                throw new BlockException();
+            }
+            windows[windowIndex].passCount.incrementAndGet();
+            passCount.incrementAndGet();
+        } finally {
+            lock.unlock();
         }
-        windows[windowIndex].passCount.incrementAndGet();
-        passCount.incrementAndGet();
-        lock.unlock();
         return true;
     }
 
@@ -84,19 +88,17 @@ public class SlidingWindowRateLimit implements RateLimit, Runnable {
         }
     }
 
-    private ScheduledExecutorService scheduledExecutorService;
-
     private void startResetTask() {
-        scheduledExecutorService = new ScheduledThreadPoolExecutor(1, (runnable)-> new Thread(runnable,"SlidingWindowRateLimit-Thread-ToMoveWindow"));
+        ScheduledExecutorService scheduledExecutorService = new ScheduledThreadPoolExecutor(1, (runnable) -> new Thread(runnable, "SlidingWindowRateLimit-Thread-ToMoveWindow"));
         scheduledExecutorService.scheduleAtFixedRate(this, windowPeriod, windowPeriod, timeUnit);
     }
 
     @Override
     public void run() {
         // 获取当前窗口索引
-        Integer curIndex = (windowIndex + 1) % windowSize;
+        int curIndex = (windowIndex + 1) % windowSize;
         // 重置当前窗口索引通过数量，并获取上一次通过数量
-        Integer count = windows[curIndex].passCount.getAndSet(0);
+        int count = windows[curIndex].passCount.getAndSet(0);
         windowIndex = curIndex;
         // 总通过数量 减去 当前窗口上次通过数量
         passCount.addAndGet(-count);
