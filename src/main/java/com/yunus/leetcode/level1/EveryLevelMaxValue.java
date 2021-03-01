@@ -17,13 +17,15 @@ public class EveryLevelMaxValue {
     static Map<Integer, List<Integer>> map = new HashMap<>();
 
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(2,new TreeNode(1),new TreeNode(3));
+        TreeNode left = new TreeNode(5, new TreeNode(9), null);
+        TreeNode right = new TreeNode(3, new TreeNode(4), new TreeNode(7));
+        TreeNode root = new TreeNode(2, left, right);
         everyLevelMaxValue(root);
     }
 
     public static void everyLevelMaxValue(TreeNode root) {
         getEveryLevel(root, 1);
-        map.forEach((key, value) -> System.out.println(value.stream().max(Integer::compareTo).get()));
+        map.forEach((key, value) -> System.out.println("第" + key + "层最大值：" + value.stream().max(Integer::compareTo).get()));
     }
 
     public static void getEveryLevel(TreeNode root, int high) {
