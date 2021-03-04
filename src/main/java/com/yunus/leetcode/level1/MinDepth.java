@@ -17,7 +17,7 @@ public class MinDepth {
      *
      * @param root 根节点
      */
-    public int minDepth(TreeNode root) {
+    public static int minDepth(TreeNode root) {
         if (root == null) {
             return 0;
         }
@@ -66,8 +66,4 @@ public class MinDepth {
         return minDepth + 1;
     }
 
-    public static void main(String[] args) {
-        TreeNode root = new TreeNode(3, new TreeNode(9), new TreeNode(20, new TreeNode(15), new TreeNode(7)));
-        System.out.println(minDepth2(root));
-    }
 }
