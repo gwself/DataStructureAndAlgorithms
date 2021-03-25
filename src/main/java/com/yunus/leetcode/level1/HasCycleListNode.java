@@ -8,19 +8,43 @@ package com.yunus.leetcode.level1;
 public class HasCycleListNode {
 
     public boolean hashCycle(ListNode chain) {
-        if (chain == null || chain.next == null) {
-            return false;
-        }
-        ListNode fast = chain.next;
+        ListNode quick = chain;
         ListNode slow = chain;
-        while (fast != slow) {
-            if (fast == null || slow == null) {
-                return false;
+        //当快指针能够走到头表示无环
+        while (quick != null && quick.next != null) {
+            quick = quick.next.next;
+            slow = slow.next;
+            if (quick == slow) {
+                return true;
             }
-            fast = chain.next.next;
-            slow = chain.next;
         }
-        return true;
+        return false;
+    }
+
+    /**
+     * 返回环的入口节点，如果没有环，返回null
+     *
+     * @param head 头节点
+     * @return
+     */
+    public ListNode detectCycle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+
+            if (fast == slow) {
+                ListNode slow2 = head;
+                while (slow2 != slow) {
+                    slow = slow.next;
+                    slow2 = slow2.next;
+                }
+                return slow;
+            }
+        }
+        return null;
     }
 
     class ListNode {
