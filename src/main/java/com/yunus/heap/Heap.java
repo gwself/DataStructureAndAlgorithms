@@ -2,7 +2,7 @@ package com.yunus.heap;
 
 /**
  * @author gaoyunfeng
- * @Description:
+ * @Description: https://time.geekbang.org/column/article/69913
  * @date 2021/3/18 9:58
  */
 public class Heap {
@@ -10,16 +10,21 @@ public class Heap {
     /**
      * 数组，从下标1开始存储数据
      */
-    private int[] a;
+    private final int[] a;
     /**
      * 堆可以存储的最大数据个数
      */
-    private int n;
+    private final int n;
     /**
      * 堆中已经存储的数据个数
      */
     private int count;
 
+    /**
+     * 数组中下标为 i 的节点的左子节点，就是下标为 i∗2 的节点，右子节点就是下标为 i∗2+1 的节点，父节点就是下标为 i/2的节点。
+     *
+     * @param capacity
+     */
     public Heap(int capacity) {
         a = new int[capacity + 1];
         n = capacity;
@@ -68,13 +73,6 @@ public class Heap {
             }
             swap(a, i, maxPos);
             i = maxPos;
-        }
-    }
-
-
-    private void buildHeap(int[] a, int n) {
-        for (int i = n / 2; i >= 1; --i) {
-            heapify(a, n, i);
         }
     }
 
