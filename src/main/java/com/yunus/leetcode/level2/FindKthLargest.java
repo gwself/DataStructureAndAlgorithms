@@ -1,5 +1,6 @@
 package com.yunus.leetcode.level2;
 
+import java.util.PriorityQueue;
 import java.util.Random;
 
 /**
@@ -47,4 +48,18 @@ public class FindKthLargest {
         a[j] = temp;
     }
 
+    public int maxHeap(int[] nums, int k) {
+        PriorityQueue<Integer> heap = new PriorityQueue<>(k, (e1, e2) -> e2 - e1);
+        for (int num : nums) {
+            if (heap.size() < k) {
+                heap.offer(num);
+            } else if (num < heap.peek()) {
+                heap.poll();
+                heap.offer(num);
+            }
+        }
+        return heap.peek();
+    }
+
 }
+
