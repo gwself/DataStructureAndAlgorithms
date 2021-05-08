@@ -1,12 +1,5 @@
 package com.yunus.foo;
 
-import com.yunus.leetcode.TreeNode;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
 /**
  * @author gaoyunfeng
  * @Description:
@@ -14,34 +7,20 @@ import java.util.Set;
  */
 public class Test {
 
+    public static void main(String[] args) throws InterruptedException {
 
-    Map<Integer, TreeNode> parent = new HashMap<Integer, TreeNode>();
-    Set<Integer> visited = new HashSet<Integer>();
 
-    public void dfs(TreeNode root) {
-        if (root.left != null) {
-            parent.put(root.left.val, root);
-            dfs(root.left);
-        }
-        if (root.right != null) {
-            parent.put(root.right.val, root);
-            dfs(root.right);
-        }
     }
 
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        dfs(root);
-        while (p != null) {
-            visited.add(p.val);
-            p = parent.get(p.val);
+    public int maxProfit(int[] prices) {
+        int n = prices.length;
+        int[][] dp = new int[n][2];
+        dp[0][0] = 0;
+        dp[0][1] = -prices[0];
+        for (int i = 1; i < n; ++i) {
+            dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
+            dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][0] - prices[i]);
         }
-        while (q != null) {
-            if (visited.contains(q.val)) {
-                return q;
-            }
-            q = parent.get(q.val);
-        }
-        return null;
+        return dp[n - 1][0];
     }
-
 }
