@@ -1,5 +1,7 @@
 package com.yunus.foo;
 
+import com.yunus.leetcode.ListNode;
+
 /**
  * @author gaoyunfeng
  * @Description:
@@ -9,18 +11,42 @@ public class Test {
 
     public static void main(String[] args) throws InterruptedException {
 
-
     }
 
-    public int maxProfit(int[] prices) {
-        int n = prices.length;
-        int[][] dp = new int[n][2];
-        dp[0][0] = 0;
-        dp[0][1] = -prices[0];
-        for (int i = 1; i < n; ++i) {
-            dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
-            dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][0] - prices[i]);
+    /**
+     * @param head ListNode类
+     * @param n    int整型
+     * @return ListNode类
+     */
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        // write code here
+        if (head == null) {
+            return null;
         }
-        return dp[n - 1][0];
+        ListNode p = head;
+        ListNode q = head;
+        ListNode pre = null;
+        while (n > 0) {
+            if (p != null) {
+                p = p.next;
+            } else {
+                return null;
+            }
+            n--;
+        }
+        if (p == null) {
+            return head.next;
+        }
+        while (p != null) {
+            p = p.next;
+            pre = q;
+            q = q.next;
+            if (p == null) {
+                pre.next = q.next;
+            }
+
+        }
+        return head;
     }
+
 }
