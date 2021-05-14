@@ -9,44 +9,27 @@ import com.yunus.leetcode.ListNode;
  */
 public class Test {
 
-    public static void main(String[] args) throws InterruptedException {
-
-    }
-
-    /**
-     * @param head ListNode类
-     * @param n    int整型
-     * @return ListNode类
-     */
-    public ListNode removeNthFromEnd(ListNode head, int n) {
-        // write code here
-        if (head == null) {
-            return null;
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        // 边界条件判断
+        if (l1 == null) {
+            return l2;
         }
-        ListNode p = head;
-        ListNode q = head;
-        ListNode pre = null;
-        while (n > 0) {
-            if (p != null) {
-                p = p.next;
+        if (l2 == null) {
+            return l1;
+        }
+        ListNode head = new ListNode(Integer.MIN_VALUE);
+        ListNode tail = head;
+        while (l1 != null && l2 != null) {
+            if (l1.val < l2.val) {
+                tail.next = new ListNode(l1.val);
+                l1 = l1.next;
             } else {
-                return null;
+                tail.next = new ListNode(l2.val);
+                l2 = l2.next;
             }
-            n--;
+            tail = tail.next;
         }
-        if (p == null) {
-            return head.next;
-        }
-        while (p != null) {
-            p = p.next;
-            pre = q;
-            q = q.next;
-            if (p == null) {
-                pre.next = q.next;
-            }
-
-        }
-        return head;
+        tail.next = l1 == null ? l2 : l1;
+        return head.next;
     }
-
 }
