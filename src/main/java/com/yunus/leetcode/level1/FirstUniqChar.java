@@ -1,5 +1,6 @@
 package com.yunus.leetcode.level1;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -11,7 +12,7 @@ import java.util.TreeMap;
 public class FirstUniqChar {
 
     public char firstUniqChar(String s) {
-        Map<Character, Integer> map = new TreeMap<>();
+        Map<Character, Integer> map = new LinkedHashMap<>();
         for (int i = 0; i < s.length(); i++) {
             Integer count = map.getOrDefault(s.charAt(i), 0);
             map.put(s.charAt(i), count + 1);

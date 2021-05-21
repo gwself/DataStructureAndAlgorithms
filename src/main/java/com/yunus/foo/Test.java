@@ -9,27 +9,23 @@ import com.yunus.leetcode.ListNode;
  */
 public class Test {
 
-    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        // 边界条件判断
-        if (l1 == null) {
-            return l2;
-        }
-        if (l2 == null) {
-            return l1;
-        }
-        ListNode head = new ListNode(Integer.MIN_VALUE);
-        ListNode tail = head;
-        while (l1 != null && l2 != null) {
-            if (l1.val < l2.val) {
-                tail.next = new ListNode(l1.val);
-                l1 = l1.next;
-            } else {
-                tail.next = new ListNode(l2.val);
-                l2 = l2.next;
+    public static void main(String[] args) {
+
+    }
+
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        ListNode node1 = headA;
+        ListNode node2 = headB;
+        while (node1 != node2) {
+            node1 = node1.next;
+            if (node1.next == null) {
+                node1 = headB;
             }
-            tail = tail.next;
+            node2 = node2.next;
+            if (node2.next == null) {
+                node2 = headA;
+            }
         }
-        tail.next = l1 == null ? l2 : l1;
-        return head.next;
+        return node2;
     }
 }
