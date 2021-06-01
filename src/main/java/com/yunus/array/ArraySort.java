@@ -185,4 +185,74 @@ public class ArraySort {
         }
     }
 
+    /*
+     *   ########################非优化版快排start################################
+     */
+
+    /**
+     * @param nums
+     * @param low
+     * @param high
+     */
+    public void quickSort(int[] nums, int low, int high) {
+
+        if (low < high) {
+            int index = partition2(nums, low, high);
+            quickSort(nums, low, index - 1);
+            quickSort(nums, index + 1, high);
+        }
+
+    }
+
+    public int partition2(int[] nums, int low, int high) {
+
+        int pivot = nums[low];
+        while (low < high) {
+            //移动high指针
+            while (low < high && nums[high] >= pivot) {
+                high--;
+            }
+            //填坑
+            if (low < high) {
+                nums[low] = nums[high];
+            }
+            while (low < high && nums[low] <= pivot) {
+                low++;
+            }
+            //填坑
+            if (low < high) {
+                nums[high] = nums[low];
+            }
+        }
+        //基准数放到合适的位置
+        nums[low] = pivot;
+        return low;
+    }
+
+    public int partition3(int[] nums, int low, int high) {
+
+        int pivot = nums[low];
+        int start = low;
+
+        while (low < high) {
+            while (low < high && nums[high] >= pivot) {
+                high--;
+            }
+            while (low < high && nums[low] <= pivot) {
+                low++;
+            }
+            if (low >= high) {
+                break;
+            }
+            swap(nums, low, high);
+        }
+        //基准值归位
+        swap(nums, start, low);
+        return low;
+    }
+
+    /*
+     *   ########################非优化版快排end################################
+     */
+
 }
