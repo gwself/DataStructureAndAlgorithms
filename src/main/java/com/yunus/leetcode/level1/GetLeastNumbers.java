@@ -1,7 +1,5 @@
 package com.yunus.leetcode.level1;
 
-import java.util.Comparator;
-import java.util.PriorityQueue;
 import java.util.Random;
 
 /**
